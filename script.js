@@ -54,20 +54,30 @@ document.querySelectorAll(".nav-link").forEach((link) => {
 });
 
 // Scroll Reveal Animation (Intersection Observer)
+// Scroll Reveal Animation (Intersection Observer)
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px",
 };
 
+// Generic Observer for standard elements (Fade Up)
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
-      if (entry.target.classList.contains("progress")) {
-        // Trigger progress bar animation restart if needed
-        entry.target.style.animation = "none";
-        entry.target.offsetHeight; /* trigger reflow */
-        entry.target.style.animation = "progressLoad 1.5s ease-out forwards";
+      observer.unobserve(entry.target); // Trigger once
+    }
+  });
+}, observerOptions);
+
+// Offer Grid Observer (Triggers children with staggered delay)
+const observerContainer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains("offer-grid")) {
+        const cards = entry.target.querySelectorAll(".offer-card");
+        cards.forEach((card) => card.classList.add("visible"));
+        observerContainer.unobserve(entry.target);
       }
     }
   });
@@ -75,11 +85,34 @@ const observer = new IntersectionObserver((entries) => {
 
 // Select elements to animate
 const scrollElements = document.querySelectorAll(
-  ".section-title, .about-text p, .stat-card, .project-card",
+  ".section-title, .about-text p, .stat-card, .project-card, .offer-grid",
 );
+
+// Pre-calculate delays for offer cards (Reverse order: Right first, then Left)
+const offerCards = document.querySelectorAll(".offer-card");
+offerCards.forEach((el, index) => {
+  // Start state: hidden off-screen
+  el.classList.add("scroll-hidden-left");
+
+  // Reverse delay logic
+  const reverseIndex = offerCards.length - 1 - index;
+  el.style.transitionDelay = `${reverseIndex * 0.4}s`; // 0.4s stagger
+});
+
 scrollElements.forEach((el) => {
-  el.classList.add("scroll-hidden"); // Add initial hidden utility class
-  observer.observe(el);
+  // Skip animation for Offer section title
+  if (el.classList.contains("section-title") && el.closest("#offer")) {
+    return;
+  }
+
+  // If it's the Offer Grid, use the Container Observer
+  if (el.classList.contains("offer-grid")) {
+    observerContainer.observe(el);
+  } else {
+    // Otherwise use the Generic Observer
+    el.classList.add("scroll-hidden");
+    observer.observe(el);
+  }
 });
 
 // Add CSS class for hidden state dynamically to keep HTML clean
@@ -214,6 +247,47 @@ function animateParticles() {
 
 initParticles();
 animateParticles();
+
+// Contact Form Handling (Formspree)
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        formStatus.textContent = "Wiadomość została wysłana! Dziękuję.";
+        formStatus.className = "success-message";
+        contactForm.reset();
+      } else {
+        const errorData = await response.json();
+        if (Object.hasOwn(errorData, "errors")) {
+          formStatus.textContent = errorData["errors"]
+            .map((error) => error["message"])
+            .join(", ");
+        } else {
+          formStatus.textContent =
+            "Ups! Coś poszło nie tak przy wysyłaniu formularza.";
+        }
+        formStatus.className = "error-message";
+      }
+    } catch (error) {
+      formStatus.textContent = "Wystąpił błąd sieci. Spróbuj ponownie później.";
+      formStatus.className = "error-message";
+    }
+  });
+}
 
 // Smooth Scroll for Anchors (Polyfill-like behavior if needed, but CSS scroll-behavior usually handles it)
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

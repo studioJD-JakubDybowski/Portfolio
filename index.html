@@ -7,7 +7,7 @@
       name="description"
       content="Portfolio Jakuba Dybowskiego - Full Stack Developer. C#, C++, React, JavaScript, HTML."
     />
-    <title>Jakub Dybowski | Portfolio</title>
+    <title>Portfolio | Jakub Dybowski</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +26,7 @@
       <a href="#hero" class="logo">JD<span class="accent">.</span></a>
       <nav class="navbar">
         <a href="#about" class="nav-link">O mnie</a>
+        <a href="#offer" class="nav-link">Oferta</a>
         <a href="#projects" class="nav-link">Projekty</a>
         <a href="#contact" class="nav-link btn-contact">Kontakt</a>
       </nav>
@@ -43,8 +44,12 @@
           <h1 class="name">Jakub Dybowski</h1>
           <h2 class="role"></h2>
           <p class="bio-short">
-            Specjalizuję się w tworzeniu wydajnych i estetycznych stron oraz
-            aplikacji.
+            Łączę precyzję programowania z nowoczesnym designem. Nie korzystam z
+            szablonów, a każdy projekt traktuję indywidualnie, tworząc unikalne
+            rozwiązania od zera. Dbam o to, aby Twoja strona nie tylko świetnie
+            wyglądała, ale była też intuicyjna i szybka, a jej obsługa stanowiła
+            czystą przyjemność. Dostarczam technologię, która realnie wspiera
+            rozwój Twojego biznesu.
           </p>
           <div class="hero-btns">
             <a href="#projects" class="btn btn-primary">Zobacz moje prace</a>
@@ -62,24 +67,36 @@
         </a>
       </section>
 
-      <section id="about" class="section about">
+      <!-- NEW OFFER SECTION -->
+      <section id="offer" class="section section-white">
         <div class="container">
-          <h2 class="section-title">O <span class="accent">mnie</span></h2>
-          <div class="about-grid">
-            <div class="about-text">
+          <h2 class="section-title">Moja <span class="accent">Oferta</span></h2>
+          <div class="offer-grid">
+            <article class="offer-card">
+              <div class="offer-icon"><i class="fas fa-layer-group"></i></div>
+              <h3>Strony WWW</h3>
               <p>
-                Jestem programistą z technicznym zacięciem, który wierzy, że
-                dobra strona internetowa to połączenie logiki i designu. Nie
-                buduję stron „z szablonu”. Każdy projekt traktuję indywidualnie,
-                dbając o to, by kod był lekki, a obsługa strony przez
-                użytkownika czystą przyjemnością. Moim celem jest tworzenie
-                stron, które nie tylko działają, ale również robią wrażenie.
-                Stawiam na <strong>user experience</strong> i detale, które
-                odróżniają dobrą stronę od świetnej. Jeśli szukasz kogoś, kto
-                rozumie technologię i potrafi ją wykorzystać do rozwoju Twojego
-                biznesu, jesteś w dobrym miejscu.
+                Projektuję i wdrażam nowoczesne, responsywne strony internetowe
+                (Landing Page, Wizytówki, Portfolio) zoptymalizowane pod SEO.
               </p>
-            </div>
+            </article>
+            <article class="offer-card">
+              <div class="offer-icon"><i class="fas fa-code"></i></div>
+              <h3>Aplikacje Webowe</h3>
+              <p>
+                Tworzę nowoczesne aplikacje SPA (React), które działają
+                błyskawicznie i bez przeładowywania stron. Zapewniam płynność i
+                komfort obsługi znany z aplikacji mobilnych.
+              </p>
+            </article>
+            <article class="offer-card">
+              <div class="offer-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3>Responsywność</h3>
+              <p>
+                Dbam o to, aby każdy projekt wyglądał perfekcyjnie na każdym
+                urządzeniu - od smartfona po duży ekran monitora.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -160,16 +177,60 @@
             Skontaktuj się <span class="accent">ze mną</span>
           </h2>
           <div class="contact-content">
-            <p>Szukasz programisty do swojego projektu? A może masz pytanie?</p>
-            <a
-              href="mailto:kontakt.jakubdybowski@gmail.com"
-              class="btn btn-primary big-contact-btn"
-              >kontakt.jakubdybowski@gmail.com</a
+            <p>Masz pytanie lub propozycję współpracy? Napisz do mnie!</p>
+
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/mjgevnpp"
+              method="POST"
+              class="contact-form"
             >
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Twoje Imię"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Twój Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="5"
+                  placeholder="Wiadomość"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary big-contact-btn">
+                Wyślij Wiadomość
+              </button>
+              <div id="form-status"></div>
+            </form>
 
             <div class="social-links">
-              <a href="#" class="social-link">GitHub</a>
-              <a href="#" class="social-link">LinkedIn</a>
+              <a
+                href="https://github.com/Dybsonereq"
+                target="_blank"
+                class="social-link"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/jakub-dybowski/"
+                target="_blank"
+                class="social-link"
+                ><i class="fab fa-linkedin"></i> LinkedIn</a
+              >
             </div>
           </div>
         </div>
