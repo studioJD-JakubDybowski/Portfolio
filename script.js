@@ -130,63 +130,73 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// Hero Canvas Animation (Particles)
-const canvas = document.getElementById("hero-canvas");
-const ctx = canvas.getContext("2d");
+// Background Particles Animation (Restored)
+const bgCanvas = document.getElementById("bg-particles");
+const bgCtx = bgCanvas.getContext("2d");
 
-let width, height;
+let bgWidth, bgHeight;
 let particles = [];
-let mouse = { x: null, y: null, radius: 150 };
+// Reuse global mouse tracking if possible or just use local
+// We already have mouseX/Y for Three.js, but the particles used pixel coordinates.
+// Let's reuse the logic but scope it properly.
 
-function resize() {
-  width = canvas.width = window.innerWidth > 600 ? 500 : window.innerWidth;
-  height = canvas.height = window.innerWidth > 600 ? 500 : 300;
+let particleMouse = { x: null, y: null, radius: 150 };
+
+function resizeBg() {
+  const container = document.querySelector(".hero-visual");
+  bgWidth = bgCanvas.width = container.offsetWidth;
+  bgHeight = bgCanvas.height = container.offsetHeight;
 }
 
-window.addEventListener("resize", resize);
-window.addEventListener("mousemove", (e) => {
-  // Calculate mouse position relative to canvas
-  const rect = canvas.getBoundingClientRect();
-  mouse.x = e.clientX - rect.left;
-  mouse.y = e.clientY - rect.top;
+// Check if resize listener needs to be shared.
+// The Three.js one uses window resize.
+// We can add another listener or combine. adding another is safer for now.
+window.addEventListener("resize", resizeBg);
+
+// We need to track mouse in pixel coords relative to canvas again for particles
+document.addEventListener("mousemove", (e) => {
+  const rect = bgCanvas.getBoundingClientRect();
+  particleMouse.x = e.clientX - rect.left;
+  particleMouse.y = e.clientY - rect.top;
 });
 
-window.addEventListener("mouseleave", () => {
-  mouse.x = null;
-  mouse.y = null;
+document.addEventListener("mouseleave", () => {
+  particleMouse.x = null;
+  particleMouse.y = null;
 });
 
-resize();
+// Initial resize
+// Wait for load or just run
+// Since script is at bottom of body, elements exist.
+resizeBg();
 
 class Particle {
   constructor() {
-    this.x = Math.random() * width;
-    this.y = Math.random() * height;
-    this.vx = (Math.random() - 0.5) * 1; // Velocity X
-    this.vy = (Math.random() - 0.5) * 1; // Velocity Y
+    this.x = Math.random() * bgWidth;
+    this.y = Math.random() * bgHeight;
+    this.vx = (Math.random() - 0.5) * 1;
+    this.vy = (Math.random() - 0.5) * 1;
     this.size = Math.random() * 2 + 1;
     this.baseX = this.x;
     this.baseY = this.y;
     this.density = Math.random() * 30 + 1;
-    this.color = `rgba(138, 43, 226, ${Math.random() * 0.5 + 0.1})`; // Accent color with transparency
+    this.color = `rgba(138, 43, 226, ${Math.random() * 0.5 + 0.1})`;
   }
 
   update() {
-    // Mouse interaction
-    if (mouse.x != null) {
-      let dx = mouse.x - this.x;
-      let dy = mouse.y - this.y;
+    if (particleMouse.x != null) {
+      let dx = particleMouse.x - this.x;
+      let dy = particleMouse.y - this.y;
       let distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < mouse.radius) {
+      if (distance < particleMouse.radius) {
         const forceDirectionX = dx / distance;
         const forceDirectionY = dy / distance;
-        const maxDistance = mouse.radius;
+        const maxDistance = particleMouse.radius;
         const force = (maxDistance - distance) / maxDistance;
         const directionX = forceDirectionX * force * this.density;
         const directionY = forceDirectionY * force * this.density;
 
-        // Move away from mouse
         this.x -= directionX;
         this.y -= directionY;
       }
@@ -195,31 +205,29 @@ class Particle {
     this.x += this.vx;
     this.y += this.vy;
 
-    // Bounce off walls
-    if (this.x < 0 || this.x > width) this.vx *= -1;
-    if (this.y < 0 || this.y > height) this.vy *= -1;
+    if (this.x < 0 || this.x > bgWidth) this.vx *= -1;
+    if (this.y < 0 || this.y > bgHeight) this.vy *= -1;
   }
 
   draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
+    bgCtx.fillStyle = this.color;
+    bgCtx.beginPath();
+    bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    bgCtx.fill();
   }
 }
 
 function initParticles() {
   particles = [];
-  for (let i = 0; i < 80; i++) {
-    // Increased particle count slightly
+  for (let i = 0; i < 60; i++) {
+    // Slightly reduced count since we have 3D now too
     particles.push(new Particle());
   }
 }
 
 function animateParticles() {
-  ctx.clearRect(0, 0, width, height);
+  bgCtx.clearRect(0, 0, bgWidth, bgHeight);
 
-  // Draw connections
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
@@ -227,12 +235,12 @@ function animateParticles() {
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < 100) {
-        ctx.strokeStyle = `rgba(138, 43, 226, ${0.1 - distance / 1000})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
+        bgCtx.strokeStyle = `rgba(138, 43, 226, ${0.1 - distance / 1000})`;
+        bgCtx.lineWidth = 1;
+        bgCtx.beginPath();
+        bgCtx.moveTo(particles[i].x, particles[i].y);
+        bgCtx.lineTo(particles[j].x, particles[j].y);
+        bgCtx.stroke();
       }
     }
   }
@@ -247,6 +255,116 @@ function animateParticles() {
 
 initParticles();
 animateParticles();
+
+// Hero Canvas Animation (Three.js 3D Abstract Shape)
+const canvasContainer = document.querySelector(".hero-visual");
+const canvas = document.getElementById("hero-canvas");
+
+// Scene Setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  75,
+  canvasContainer.offsetWidth / canvasContainer.offsetHeight,
+  0.1,
+  1000,
+);
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  alpha: true,
+  antialias: true,
+});
+
+renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+// Abstract Shape (Icosahedron for network look)
+const geometry = new THREE.IcosahedronGeometry(1.8, 1); // Radius 1.8, Detail 1
+const material = new THREE.MeshPhongMaterial({
+  color: 0x8a2be2, // Purple
+  emissive: 0x2a004a, // Dark purple glow
+  wireframe: true,
+  transparent: true,
+  opacity: 0.8,
+  side: THREE.DoubleSide,
+});
+
+const sphere = new THREE.Mesh(geometry, material);
+
+// Add a secondary inner sphere for depth
+const innerGeometry = new THREE.IcosahedronGeometry(1.2, 0);
+const innerMaterial = new THREE.MeshPhongMaterial({
+  color: 0xaa55ff,
+  wireframe: false, // Solid
+  transparent: true,
+  opacity: 0.2, // Semi-transparent
+});
+const innerSphere = new THREE.Mesh(innerGeometry, innerMaterial);
+
+// Group them
+const shapeGroup = new THREE.Group();
+shapeGroup.add(sphere);
+shapeGroup.add(innerSphere);
+scene.add(shapeGroup);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);
+
+const rectLight = new THREE.PointLight(0x8a2be2, 2, 50);
+rectLight.position.set(-5, -5, 5);
+scene.add(rectLight);
+
+camera.position.z = 5;
+
+// Mouse Interaction variables
+let mouseX = 0;
+let mouseY = 0;
+let targetRotationX = 0;
+let targetRotationY = 0;
+
+// Window Resize Handling
+window.addEventListener("resize", () => {
+  const width = canvasContainer.offsetWidth;
+  const height = canvasContainer.offsetHeight;
+
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+});
+
+// Mouse Move Handling
+document.addEventListener("mousemove", (event) => {
+  const windowHalfX = window.innerWidth / 2;
+  const windowHalfY = window.innerHeight / 2;
+
+  mouseX = (event.clientX - windowHalfX) / 100;
+  mouseY = (event.clientY - windowHalfY) / 100;
+});
+
+// Animation Loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Smooth rotation
+  targetRotationX = mouseY * 0.5;
+  targetRotationY = mouseX * 0.5;
+
+  // Easing
+  shapeGroup.rotation.x += 0.05 * (targetRotationX - shapeGroup.rotation.x);
+  shapeGroup.rotation.y += 0.05 * (targetRotationY - shapeGroup.rotation.y);
+
+  // Constant slow rotation
+  shapeGroup.rotation.y += 0.002;
+  sphere.rotation.z -= 0.001; // Inner rotation slightly different
+
+  renderer.render(scene, camera);
+}
+
+animate();
 
 // Contact Form Handling (Formspree)
 const contactForm = document.getElementById("contact-form");
