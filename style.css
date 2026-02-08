@@ -656,66 +656,175 @@ ul {
 }
 
 /* MEDIA QUERIES */
+/* MEDIA QUERIES */
+
+/* Tablet & Intermediate */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 5%;
+  }
+
+  .section {
+    padding: 60px 40px;
+  }
+
+  .name {
+    font-size: 3.5rem;
+  }
+}
+
+/* Mobile Devices */
 @media (max-width: 768px) {
   .header {
-    padding: 20px;
+    padding: 15px 20px;
+    background: rgba(
+      10,
+      10,
+      10,
+      0.95
+    ); /* More solid background for readability */
   }
 
   .mobile-menu-btn {
     display: block;
     z-index: 1001;
+    color: var(--text-color);
   }
 
   .navbar {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
+    width: 100%;
     height: 100vh;
-    background: #111;
+    background: var(--bg-color); /* Matches body bg */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    z-index: 1000;
   }
 
   .navbar.active {
     right: 0;
   }
 
+  .nav-link {
+    font-size: 1.5rem;
+    margin: 15px 0;
+  }
+
   .hero {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 100px; /* Offset for fixed header */
+    padding-bottom: 50px;
+    height: auto;
+    min-height: 100vh;
   }
 
   .hero-content {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    max-width: 100%;
+    order: 1; /* Ensure content is visually first/prominent if we used flex-direction: column-reverse, but column is fine here */
   }
 
   .hero-visual {
     position: relative;
     width: 100%;
     height: 300px;
-    right: 0;
+    right: auto;
+    top: auto;
     transform: none;
+    order: 2; /* Visual below text */
+    margin: 20px 0;
   }
 
   .name {
-    font-size: 3rem;
+    font-size: 2.8rem;
+    line-height: 1.2;
   }
 
   .role {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .bio-short {
+    font-size: 1rem;
+    padding: 0 10px;
+    margin-bottom: 30px;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
   }
 
+  .section {
+    padding: 50px 20px;
+  }
+
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  /* Force single column for cards on mobile for better readability */
+  .offer-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px; /* Prevent them from getting too wide on tablets/large phones */
+    margin: 0 auto;
+    gap: 25px;
+  }
+
+  .project-image {
+    height: 180px;
+  }
+
+  .contact-form {
+    padding: 0;
+    margin-top: 20px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .greeting {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%; /* Full width buttons for easier tapping */
+    text-align: center;
+    display: block;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-visual {
+    height: 250px; /* Smaller visual on small screens */
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .offer-card,
+  .project-card {
+    padding: 25px 20px;
   }
 }
