@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Jakuba Dybowskiego - Full Stack Developer. C#, C++, React, JavaScript, HTML.">
+    <title>Jakub Dybowski | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Placeholder for icons, or use SVG -->
+</head>
+<body>
+    <header class="header">
+        <a href="#hero" class="logo">JD<span class="accent">.</span></a>
+        <nav class="navbar">
+            <a href="#about" class="nav-link">O mnie</a>
+            <a href="#projects" class="nav-link">Projekty</a>
+            <a href="#contact" class="nav-link btn-contact">Kontakt</a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <p class="greeting">Cześć, nazywam się</p>
+                <h1 class="name">Jakub Dybowski</h1>
+                <h2 class="role">Tworzę nowoczesne rozwiązania webowe.</h2>
+                <p class="bio-short">
+                    Specjalizuję się w tworzeniu wydajnych i estetycznych stron oraz aplikacji. 
+                    Łączę precyzję C# z kreatywnością JavaScript .
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">Zobacz moje prace</a>
+                    <a href="#contact" class="btn btn-outline">Napisz do mnie</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+            <a href="#about" class="scroll-down">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="arrow"></span>
+            </a>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">O <span class="accent">mnie</span></h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            Od lat pasjonuję się programowaniem, cenię sobie czysty kod i nowoczesny design. 
+                            Rozwijam się jako Full Stack Developer, łącząc wiedzę z zakresu backendu (C#, C++) 
+                            z dynamicznym frontendem (React, JS, HTML).
+                        </p>
+                        <p>
+                            Moim celem jest tworzenie stron, które nie tylko działają, ale również robią wrażenie.
+                            Stawiam na **user experience** i detale, które odróżniają dobrą stronę od świetnej.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h3>HTML/CSS</h3>
+                            <p>Zaawansowany</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>JavaScript</h3>
+                            <p>Zaawansowany</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>C#</h3>
+                            <p>Średnio zaawansowany</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title">Wybrane <span class="accent">Projekty</span></h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-img"></div> 
+                        </div>
+                        <div class="project-content">
+                            <h3>Strona Wizytówka</h3>
+                            <p>Nowoczesna strona typu Single Page Application stworzona w czystym JS.</p>
+                            <ul class="tech-stack">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JS</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">Demo</a>
+                                <a href="#" class="link-btn">Kod</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-img"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Aplikacja .NET</h3>
+                            <p>System zarządzania zadaniami oparty na C# i frameworku .NET.</p>
+                            <ul class="tech-stack">
+                                <li>C#</li>
+                                <li>.NET</li>
+                                <li>SQL</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">Kod</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                     <article class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-img"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>React Dashboard</h3>
+                            <p>Interfejs panelu administracyjnego z dynamicznymi wykresami.</p>
+                            <ul class="tech-stack">
+                                <li>React</li>
+                                <li>Chart.js</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">Kod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title">Skontaktuj się <span class="accent">ze mną</span></h2>
+                <div class="contact-content">
+                    <p>Szukasz programisty do swojego projektu? A może masz pytanie?</p>
+                    <a href="mailto:kontakt@jakubdybowski.pl" class="btn btn-primary big-contact-btn">kontakt@jakubdybowski.pl</a>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jakub Dybowski. Stworzono z pasją.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
