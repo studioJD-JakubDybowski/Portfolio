@@ -15,6 +15,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StudioJD" />
     <meta property="og:url" content="https://studiojd.pl/" />
     <meta
       property="og:title"
@@ -37,6 +38,10 @@
       property="twitter:description"
       content="Nowoczesne strony dla małych firm. Indywidualne podejście i wysoka jakość - Zambrów i okolice."
     />
+    <meta property="twitter:image" content="https://studiojd.pl/og-image.jpg" />
+
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://studiojd.pl/" />
 
     <title>StudioJD — Profesjonalne strony internetowe dla biznesu</title>
 
@@ -49,7 +54,9 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "StudioJD",
+        "image": "https://studiojd.pl/og-image.jpg",
         "url": "https://studiojd.pl/",
+        "priceRange": "$$",
         "description": "Profesjonalne strony internetowe dla twojego biznesu",
         "address": {
           "@type": "PostalAddress",
@@ -79,9 +86,9 @@
   </head>
   <body>
     <header class="header">
-      <a href="#hero" class="logo">JD<span class="accent">.</span></a>
+      <a href="#hero" class="logo" aria-label="Strona główna StudioJD">JD<span class="accent">.</span></a>
       <nav class="navbar">
-        <a href="#about" class="nav-link">O mnie</a>
+        <a href="#hero" class="nav-link">O mnie</a>
         <a href="#offer" class="nav-link">Oferta</a>
         <a href="#projects" class="nav-link">Projekty</a>
         <a href="#contact" class="nav-link btn-contact">Kontakt</a>
@@ -116,7 +123,7 @@
           <canvas id="bg-particles"></canvas>
           <canvas id="hero-canvas"></canvas>
         </div>
-        <a href="#offer" class="scroll-down">
+        <a href="#offer" class="scroll-down" aria-label="Przewiń do oferty">
           <span class="mouse">
             <span class="wheel"></span>
           </span>
@@ -168,7 +175,8 @@
               <div class="project-image">
                 <img
                   src="numerouno.png"
-                  alt="Strona internetowa twojego biznesu"
+                  alt="Strona internetowa dla biznesu w Zambrowie"
+                  loading="lazy"
                 />
               </div>
               <div class="project-content">
@@ -191,7 +199,7 @@
 
             <article class="project-card">
               <div class="project-image">
-                <img src="numerodos.png" alt="Aplikacja .NET" />
+                <img src="numerodos.png" alt="Aplikacja .NET - system zarządzania zadaniami C#" loading="lazy" />
               </div>
               <div class="project-content">
                 <h3>Aplikacja .NET</h3>
@@ -211,7 +219,7 @@
 
             <article class="project-card">
               <div class="project-image">
-                <img src="numerotres.png" alt="React Dashboard" />
+                <img src="numerotres.png" alt="React Dashboard - interfejs panelu administracyjnego" loading="lazy" />
               </div>
               <div class="project-content">
                 <h3>React Dashboard</h3>
