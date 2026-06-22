@@ -44,7 +44,6 @@
         "name": "StudioJD",
         "image": "https://studiojd.pl/og-image.png",
         "url": "https://studiojd.pl/",
-        "telephone": "+48-XXX-XXX-XXX",
         "priceRange": "$$",
         "description": "Profesjonalne strony internetowe dla twojego biznesu",
         "address": {
@@ -63,12 +62,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header class="header">
@@ -80,6 +79,7 @@
         <a href="#pricing" class="nav-link">Cennik</a>
         <a href="#contact" class="nav-link btn-contact">Kontakt</a>
       </nav>
+      <!-- TODO: Uzupełnij numer telefonu przed deployem -->
       <a href="tel:+48XXXXXXXXX" class="header-phone" aria-label="Zadzwoń">
         <i class="fas fa-phone"></i>
         <span>+48 XXX XXX XXX</span>
@@ -159,24 +159,24 @@
       <!-- PROCESS SECTION -->
       <section id="process" class="section section-dark">
         <div class="container">
-          <h2 class="section-title">Jak <span class="accent">działam?</span></h2>
+          <h2 class="section-title" data-reveal="scale">Jak <span class="accent">działam?</span></h2>
           <div class="process-grid">
-            <div class="process-step">
+            <div class="process-step" data-reveal="up" data-delay="1">
               <div class="process-number">01</div>
               <h3>Bezpłatna konsultacja</h3>
               <p>Rozmawiamy o Twoich potrzebach, celach i oczekiwaniach. Zero zobowiązań.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-reveal="up" data-delay="2">
               <div class="process-number">02</div>
-              <h3>Projekt i makieta</h3>
-              <p>Przygotowuję wizualny projekt strony. Akceptujesz wygląd zanim zacznę kodować.</p>
+              <h3>Ustalenie wyglądu</h3>
+              <p>Razem określamy styl, kolory i układ strony. Akceptujesz kierunek wizualny zanim zacznę kodować.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-reveal="up" data-delay="3">
               <div class="process-number">03</div>
               <h3>Realizacja</h3>
               <p>Koduję stronę ręcznie od zera — bez szablonów. Szybko, czysto, wydajnie.</p>
             </div>
-            <div class="process-step">
+            <div class="process-step" data-reveal="up" data-delay="4">
               <div class="process-number">04</div>
               <h3>Wdrożenie i wsparcie</h3>
               <p>Publikuję stronę i przekazuję dostępy. Jestem dostępny na pytania.</p>
@@ -188,15 +188,18 @@
       <!-- PROJECTS SECTION -->
       <section id="projects" class="section projects">
         <div class="container">
-          <h2 class="section-title">Wybrane <span class="accent">Projekty</span></h2>
+          <h2 class="section-title" data-reveal="scale">Wybrane <span class="accent">Projekty</span></h2>
           <div class="projects-grid">
-            <article class="project-card">
+            <article class="project-card" data-reveal="up" data-delay="1">
               <div class="project-image">
                 <img
                   src="numerouno.png"
                   alt="Strona wizytówka dla lokalnej firmy — StudioJD Zambrów"
                   loading="lazy"
                 />
+                <div class="project-overlay">
+                  <span class="project-overlay-link">Zobacz projekt <span class="project-overlay-arrow">→</span></span>
+                </div>
               </div>
               <div class="project-content">
                 <h3>Strona wizytówka</h3>
@@ -212,9 +215,12 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-reveal="up" data-delay="2">
               <div class="project-image">
                 <img src="numerodos.png" alt="Landing page nastawiony na konwersję — StudioJD" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-overlay-link">Zobacz projekt <span class="project-overlay-arrow">→</span></span>
+                </div>
               </div>
               <div class="project-content">
                 <h3>Landing Page</h3>
@@ -230,9 +236,12 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-reveal="up" data-delay="3">
               <div class="project-image">
                 <img src="numerotres.png" alt="Panel administracyjny z wykresami — StudioJD" loading="lazy" />
+                <div class="project-overlay">
+                  <span class="project-overlay-link">Zobacz projekt <span class="project-overlay-arrow">→</span></span>
+                </div>
               </div>
               <div class="project-content">
                 <h3>Panel administracyjny</h3>
@@ -254,10 +263,10 @@
       <!-- PRICING SECTION -->
       <section id="pricing" class="section section-white">
         <div class="container">
-          <h2 class="section-title">Cennik</h2>
-          <p class="section-subtitle">Przejrzyste ceny bez ukrytych kosztów. Każdy projekt wyceniany indywidualnie.</p>
+          <h2 class="section-title" data-reveal="scale">Cennik</h2>
+          <p class="section-subtitle" data-reveal="up">Przejrzyste ceny bez ukrytych kosztów. Każdy projekt wyceniany indywidualnie.</p>
           <div class="pricing-grid">
-            <article class="pricing-card">
+            <article class="pricing-card" data-reveal="up" data-delay="1">
               <div class="pricing-header">
                 <h3>Wizytówka</h3>
                 <div class="price">od <span>799</span> zł</div>
@@ -273,7 +282,7 @@
               <a href="#contact" class="btn btn-outline pricing-btn">Zapytaj o wycenę</a>
             </article>
 
-            <article class="pricing-card pricing-featured">
+            <article class="pricing-card pricing-featured" data-reveal="up" data-delay="2">
               <div class="pricing-badge">Najpopularniejszy</div>
               <div class="pricing-header">
                 <h3>Landing Page</h3>
@@ -290,7 +299,7 @@
               <a href="#contact" class="btn btn-primary pricing-btn">Zapytaj o wycenę</a>
             </article>
 
-            <article class="pricing-card">
+            <article class="pricing-card" data-reveal="up" data-delay="3">
               <div class="pricing-header">
                 <h3>Sklep / Custom</h3>
                 <div class="price">od <span>2&nbsp;499</span> zł</div>
@@ -312,9 +321,9 @@
       <!-- TESTIMONIALS SECTION -->
       <section id="testimonials" class="section section-dark">
         <div class="container">
-          <h2 class="section-title">Co mówią <span class="accent">klienci?</span></h2>
+          <h2 class="section-title" data-reveal="scale">Co mówią <span class="accent">klienci?</span></h2>
           <div class="testimonials-grid">
-            <article class="testimonial-card">
+            <article class="testimonial-card" data-reveal="up" data-delay="1">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-text">"Jakub stworzył dla mnie stronę w niecałe dwa tygodnie. Klienci często komentują, że wygląda bardzo profesjonalnie. Polecam!"</p>
               <div class="testimonial-author">
@@ -326,7 +335,7 @@
               </div>
             </article>
 
-            <article class="testimonial-card">
+            <article class="testimonial-card" data-reveal="up" data-delay="2">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-text">"Prosta współpraca, szybki kontakt i efekt powyżej oczekiwań. Strona działa świetnie i już przynosi nowych klientów."</p>
               <div class="testimonial-author">
@@ -338,7 +347,7 @@
               </div>
             </article>
 
-            <article class="testimonial-card">
+            <article class="testimonial-card" data-reveal="up" data-delay="3">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-text">"Strona działa perfekcyjnie na telefonie, a to dla moich klientów kluczowe. Bardzo dobry kontakt i uczciwe ceny."</p>
               <div class="testimonial-author">
@@ -356,18 +365,19 @@
       <!-- CONTACT SECTION -->
       <section id="contact" class="section contact">
         <div class="container">
-          <h2 class="section-title">
+          <h2 class="section-title" data-reveal="scale">
             Skontaktuj się <span class="accent">ze mną</span>
           </h2>
           <div class="contact-content">
-            <p>Masz pytanie lub propozycję współpracy? Napisz lub zadzwoń!</p>
+            <p data-reveal="up">Masz pytanie lub propozycję współpracy? Napisz lub zadzwoń!</p>
 
             <div class="contact-methods">
-              <a href="tel:+48XXXXXXXXX" class="contact-method">
+              <!-- TODO: Uzupełnij numer telefonu przed deployem -->
+              <a href="tel:+48XXXXXXXXX" class="contact-method" data-reveal="left">
                 <i class="fas fa-phone"></i>
                 <span>+48 XXX XXX XXX</span>
               </a>
-              <a href="mailto:kontakt@studiojd.pl" class="contact-method">
+              <a href="mailto:kontakt@studiojd.pl" class="contact-method" data-reveal="right">
                 <i class="fas fa-envelope"></i>
                 <span>kontakt@studiojd.pl</span>
               </a>
@@ -378,20 +388,24 @@
               action="https://formspree.io/f/mjgevnpp"
               method="POST"
               class="contact-form"
+              data-reveal="up"
             >
               <div class="form-group">
-                <input type="text" name="name" id="name" placeholder="Twoje Imię" required />
+                <label for="name">Imię</label>
+                <input type="text" name="name" id="name" placeholder="Twoje imię" required />
               </div>
               <div class="form-group">
-                <input type="email" name="email" id="email" placeholder="Twój Email" required />
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" placeholder="twoj@email.pl" required />
               </div>
               <div class="form-group">
+                <label for="message">Wiadomość</label>
                 <textarea name="message" id="message" rows="5" placeholder="Opisz czego potrzebujesz..." required></textarea>
               </div>
               <button type="submit" class="btn btn-primary big-contact-btn">
                 Wyślij Wiadomość
               </button>
-              <div id="form-status"></div>
+              <div id="form-status" role="status" aria-live="polite"></div>
             </form>
           </div>
         </div>

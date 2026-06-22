@@ -53,82 +53,48 @@ document.querySelectorAll(".nav-link").forEach((link) => {
   });
 });
 
-// Scroll Reveal Animation (Intersection Observer)
-// Scroll Reveal Animation (Intersection Observer)
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px",
-};
-
-// Generic Observer for standard elements (Fade Up)
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target); // Trigger once
-    }
-  });
-}, observerOptions);
-
-// Offer Grid Observer (Triggers children with staggered delay)
-const observerContainer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.target.classList.contains("offer-grid")) {
-        const cards = entry.target.querySelectorAll(".offer-card");
-        cards.forEach((card) => card.classList.add("visible"));
-        observerContainer.unobserve(entry.target);
+// ── Scroll Reveal — data-reveal system ──────────────────────────────────────
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        revealObserver.unobserve(entry.target);
       }
-    }
-  });
-}, observerOptions);
-
-// Select elements to animate
-const scrollElements = document.querySelectorAll(
-  ".section-title, .about-text p, .stat-card, .project-card, .offer-grid, .process-step, .pricing-card, .testimonial-card, .contact-method",
+    });
+  },
+  { threshold: 0.12, rootMargin: "0px" }
 );
 
-// Pre-calculate delays for offer cards (Reverse order: Right first, then Left)
+document.querySelectorAll("[data-reveal]").forEach((el) => {
+  revealObserver.observe(el);
+});
+
+// ── Offer Grid — slide-in from left (staggered) ──────────────────────────────
+const offerGridObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll(".offer-card").forEach((card) =>
+          card.classList.add("visible")
+        );
+        offerGridObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
 const offerCards = document.querySelectorAll(".offer-card");
 offerCards.forEach((el, index) => {
-  // Start state: hidden off-screen
   el.classList.add("scroll-hidden-left");
-
-  // Reverse delay logic
   const reverseIndex = offerCards.length - 1 - index;
-  el.style.transitionDelay = `${reverseIndex * 0.4}s`; // 0.4s stagger
+  el.style.transitionDelay = `${reverseIndex * 0.15}s`;
 });
 
-scrollElements.forEach((el) => {
-  // Skip animation for Offer section title
-  if (el.classList.contains("section-title") && el.closest("#offer")) {
-    return;
-  }
+const offerGrid = document.querySelector(".offer-grid");
+if (offerGrid) offerGridObserver.observe(offerGrid);
 
-  // If it's the Offer Grid, use the Container Observer
-  if (el.classList.contains("offer-grid")) {
-    observerContainer.observe(el);
-  } else {
-    // Otherwise use the Generic Observer
-    el.classList.add("scroll-hidden");
-    observer.observe(el);
-  }
-});
-
-// Add CSS class for hidden state dynamically to keep HTML clean
-const style = document.createElement("style");
-style.innerHTML = `
-    .scroll-hidden {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-    }
-    .visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
 
 // Background Particles Animation (Restored)
 const bgCanvas = document.getElementById("bg-particles");
@@ -180,7 +146,7 @@ class Particle {
     this.baseX = this.x;
     this.baseY = this.y;
     this.density = Math.random() * 30 + 1;
-    this.color = `rgba(138, 43, 226, ${Math.random() * 0.5 + 0.1})`;
+    this.color = `rgba(245, 158, 11, ${Math.random() * 0.5 + 0.1})`;
   }
 
   update() {
@@ -235,7 +201,7 @@ function animateParticles() {
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < 100) {
-        bgCtx.strokeStyle = `rgba(138, 43, 226, ${0.1 - distance / 1000})`;
+        bgCtx.strokeStyle = `rgba(245, 158, 11, ${0.1 - distance / 1000})`;
         bgCtx.lineWidth = 1;
         bgCtx.beginPath();
         bgCtx.moveTo(particles[i].x, particles[i].y);
@@ -280,8 +246,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 // Abstract Shape (Icosahedron for network look)
 const geometry = new THREE.IcosahedronGeometry(1.8, 1); // Radius 1.8, Detail 1
 const material = new THREE.MeshPhongMaterial({
-  color: 0x8a2be2, // Purple
-  emissive: 0x2a004a, // Dark purple glow
+  color: 0xf59e0b, // Amber
+  emissive: 0x7c3a00, // Dark amber glow
   wireframe: true,
   transparent: true,
   opacity: 0.8,
@@ -293,10 +259,10 @@ const sphere = new THREE.Mesh(geometry, material);
 // Add a secondary inner sphere for depth
 const innerGeometry = new THREE.IcosahedronGeometry(1.2, 0);
 const innerMaterial = new THREE.MeshPhongMaterial({
-  color: 0xaa55ff,
+  color: 0xfbbf24,
   wireframe: false, // Solid
   transparent: true,
-  opacity: 0.2, // Semi-transparent
+  opacity: 0.15, // Semi-transparent
 });
 const innerSphere = new THREE.Mesh(innerGeometry, innerMaterial);
 
@@ -314,7 +280,7 @@ const pointLight = new THREE.PointLight(0xffffff, 1, 100);
 pointLight.position.set(10, 10, 10);
 scene.add(pointLight);
 
-const rectLight = new THREE.PointLight(0x8a2be2, 2, 50);
+const rectLight = new THREE.PointLight(0xf59e0b, 2, 50);
 rectLight.position.set(-5, -5, 5);
 scene.add(rectLight);
 
