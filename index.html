@@ -17,33 +17,21 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="StudioJD" />
     <meta property="og:url" content="https://studiojd.pl/" />
-    <meta
-      property="og:title"
-      content="StudioJD — Profesjonalne strony internetowe dla małych firm w Zambrowie"
-    />
-    <meta
-      property="og:description"
-      content="Tworzę nowoczesne strony dla biznesu w Zambrowie. Profesjonalna strona internetowa to klucz do sukcesu Twojej firmy."
-    />
-    <meta property="og:image" content="https://studiojd.pl/og-image.jpg" />
+    <meta property="og:title" content="StudioJD — Profesjonalne strony internetowe dla małych firm w Zambrowie" />
+    <meta property="og:description" content="Tworzę nowoczesne strony dla biznesu w Zambrowie. Profesjonalna strona internetowa to klucz do sukcesu Twojej firmy." />
+    <meta property="og:image" content="https://studiojd.pl/og-image.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://studiojd.pl/" />
-    <meta
-      property="twitter:title"
-      content="StudioJD — Profesjonalna strona internetowa Zambrów"
-    />
-    <meta
-      property="twitter:description"
-      content="Nowoczesne strony dla małych firm. Indywidualne podejście i wysoka jakość - Zambrów i okolice."
-    />
-    <meta property="twitter:image" content="https://studiojd.pl/og-image.jpg" />
+    <meta property="twitter:title" content="StudioJD — Profesjonalna strona internetowa Zambrów" />
+    <meta property="twitter:description" content="Nowoczesne strony dla małych firm. Indywidualne podejście i wysoka jakość - Zambrów i okolice." />
+    <meta property="twitter:image" content="https://studiojd.pl/og-image.png" />
 
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://studiojd.pl/" />
 
-    <title>StudioJD — Profesjonalne strony internetowe dla biznesu</title>
+    <title>StudioJD — Profesjonalne strony internetowe dla biznesu | Zambrów</title>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="apple-touch-icon" href="favicon.svg" />
@@ -54,8 +42,9 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "StudioJD",
-        "image": "https://studiojd.pl/og-image.jpg",
+        "image": "https://studiojd.pl/og-image.png",
         "url": "https://studiojd.pl/",
+        "telephone": "+48-XXX-XXX-XXX",
         "priceRange": "$$",
         "description": "Profesjonalne strony internetowe dla twojego biznesu",
         "address": {
@@ -70,6 +59,7 @@
         "knowsAbout": ["Strony internetowe", "Strony dla biznesu", "Strony dla małych firm", "Profesjonalna strona internetowa", "Zambrów"]
       }
     </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -78,21 +68,22 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Placeholder for icons, or use SVG -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header class="header">
       <a href="#hero" class="logo" aria-label="Strona główna StudioJD">JD<span class="accent">.</span></a>
       <nav class="navbar">
-        <a href="#hero" class="nav-link">O mnie</a>
+        <a href="#hero" class="nav-link">Start</a>
         <a href="#offer" class="nav-link">Oferta</a>
         <a href="#projects" class="nav-link">Projekty</a>
+        <a href="#pricing" class="nav-link">Cennik</a>
         <a href="#contact" class="nav-link btn-contact">Kontakt</a>
       </nav>
+      <a href="tel:+48XXXXXXXXX" class="header-phone" aria-label="Zadzwoń">
+        <i class="fas fa-phone"></i>
+        <span>+48 XXX XXX XXX</span>
+      </a>
       <button class="mobile-menu-btn" aria-label="Menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -103,16 +94,14 @@
     <main>
       <section id="hero" class="hero">
         <div class="hero-content">
-          <p class="greeting"></p>
+          <p class="greeting">Cześć, jestem Jakub</p>
           <h1 class="name">StudioJD</h1>
           <h2 class="role">Strony internetowe dla Twojego biznesu</h2>
           <p class="bio-short">
             Łączę precyzję programowania z nowoczesnym designem. Nie korzystam z
-            szablonów, a każdy projekt traktuję indywidualnie, tworząc unikalne
-            rozwiązania od zera. Dbam o to, aby Twoja strona nie tylko świetnie
-            wyglądała, ale była też intuicyjna i szybka, a jej obsługa stanowiła
-            czystą przyjemność. Dostarczam technologię, która realnie wspiera
-            rozwój Twojego biznesu.
+            szablonów — każdy projekt tworzę indywidualnie od zera. Twoja strona
+            będzie szybka, intuicyjna i zaprojektowana tak, żeby przyciągała
+            klientów i realnie wspierała Twój biznes.
           </p>
           <div class="hero-btns">
             <a href="#projects" class="btn btn-primary">Zobacz moje prace</a>
@@ -131,107 +120,232 @@
         </a>
       </section>
 
-      <!-- NEW OFFER SECTION -->
+      <!-- OFFER SECTION -->
       <section id="offer" class="section section-white">
         <div class="container">
           <h2 class="section-title">Moja <span class="accent">Oferta</span></h2>
           <div class="offer-grid">
             <article class="offer-card">
-              <div class="offer-icon"><i class="fas fa-layer-group"></i></div>
-              <h3>Strony WWW</h3>
+              <div class="offer-icon"><i class="fas fa-globe"></i></div>
+              <h3>Strona Wizytówka</h3>
               <p>
-                Projektuję i wdrażam nowoczesne, responsywne strony internetowe
-                (Landing Page, Wizytówki, Portfolio) zoptymalizowane pod SEO.
+                Nowoczesna strona przedstawiająca Twoją firmę — zoptymalizowana
+                pod SEO, szybka i responsywna. Idealny punkt startowy dla każdego
+                lokalnego biznesu.
               </p>
             </article>
             <article class="offer-card">
-              <div class="offer-icon"><i class="fas fa-code"></i></div>
-              <h3>Aplikacje Webowe</h3>
+              <div class="offer-icon"><i class="fas fa-bullseye"></i></div>
+              <h3>Landing Page</h3>
               <p>
-                Tworzę nowoczesne aplikacje SPA (React), które działają
-                błyskawicznie i bez przeładowywania stron. Zapewniam płynność i
-                komfort obsługi znany z aplikacji mobilnych.
+                Jedna strona nastawiona na konkretny cel — pozyskanie klienta,
+                zapis na wydarzenie lub sprzedaż usługi. Maksymalna konwersja,
+                minimalne koszty.
               </p>
             </article>
             <article class="offer-card">
-              <div class="offer-icon"><i class="fas fa-mobile-alt"></i></div>
-              <h3>Responsywność</h3>
+              <div class="offer-icon"><i class="fas fa-shopping-cart"></i></div>
+              <h3>Sklep Internetowy</h3>
               <p>
-                Dbam o to, aby każdy projekt wyglądał perfekcyjnie na każdym
-                urządzeniu - od smartfona po duży ekran monitora.
+                Sprzedawaj online bez pośredników. Projektuję sklepy szyte na
+                miarę — z koszykiem, płatnościami i panelem zarządzania
+                produktami.
               </p>
             </article>
           </div>
         </div>
       </section>
 
+      <!-- PROCESS SECTION -->
+      <section id="process" class="section section-dark">
+        <div class="container">
+          <h2 class="section-title">Jak <span class="accent">działam?</span></h2>
+          <div class="process-grid">
+            <div class="process-step">
+              <div class="process-number">01</div>
+              <h3>Bezpłatna konsultacja</h3>
+              <p>Rozmawiamy o Twoich potrzebach, celach i oczekiwaniach. Zero zobowiązań.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">02</div>
+              <h3>Projekt i makieta</h3>
+              <p>Przygotowuję wizualny projekt strony. Akceptujesz wygląd zanim zacznę kodować.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">03</div>
+              <h3>Realizacja</h3>
+              <p>Koduję stronę ręcznie od zera — bez szablonów. Szybko, czysto, wydajnie.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">04</div>
+              <h3>Wdrożenie i wsparcie</h3>
+              <p>Publikuję stronę i przekazuję dostępy. Jestem dostępny na pytania.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
       <section id="projects" class="section projects">
         <div class="container">
-          <h2 class="section-title">
-            Wybrane <span class="accent">Projekty</span>
-          </h2>
+          <h2 class="section-title">Wybrane <span class="accent">Projekty</span></h2>
           <div class="projects-grid">
             <article class="project-card">
               <div class="project-image">
                 <img
                   src="numerouno.png"
-                  alt="Strona internetowa dla biznesu w Zambrowie"
+                  alt="Strona wizytówka dla lokalnej firmy — StudioJD Zambrów"
                   loading="lazy"
                 />
               </div>
               <div class="project-content">
-                <h3>Strona internetowa twojego biznesu</h3>
+                <h3>Strona wizytówka</h3>
                 <p>
-                  Nowoczesna strona internetowa dla Twojego biznesu, która
-                  wyróżni Cię na tle konkurencji.
+                  Nowoczesna strona dla lokalnego biznesu — szybka, responsywna
+                  i zoptymalizowana pod Google.
                 </p>
                 <ul class="tech-stack">
                   <li>HTML</li>
                   <li>CSS</li>
                   <li>JS</li>
                 </ul>
-                <div class="project-links">
-                  <!-- <a href="#" class="link-btn"></a>
-                  <a href="#" class="link-btn"></a> -->
-                </div>
               </div>
             </article>
 
             <article class="project-card">
               <div class="project-image">
-                <img src="numerodos.png" alt="Aplikacja .NET - system zarządzania zadaniami C#" loading="lazy" />
+                <img src="numerodos.png" alt="Landing page nastawiony na konwersję — StudioJD" loading="lazy" />
               </div>
               <div class="project-content">
-                <h3>Aplikacja .NET</h3>
+                <h3>Landing Page</h3>
                 <p>
-                  System zarządzania zadaniami oparty na C# i frameworku .NET.
+                  Strona sprzedażowa nastawiona na konwersję — czytelna
+                  struktura, CTA i formularz kontaktowy.
                 </p>
                 <ul class="tech-stack">
-                  <li>C#</li>
-                  <li>.NET</li>
-                  <li>SQL</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JS</li>
                 </ul>
-                <div class="project-links">
-                  <a href="#" class="link-btn">Kod</a>
-                </div>
               </div>
             </article>
 
             <article class="project-card">
               <div class="project-image">
-                <img src="numerotres.png" alt="React Dashboard - interfejs panelu administracyjnego" loading="lazy" />
+                <img src="numerotres.png" alt="Panel administracyjny z wykresami — StudioJD" loading="lazy" />
               </div>
               <div class="project-content">
-                <h3>React Dashboard</h3>
+                <h3>Panel administracyjny</h3>
                 <p>
-                  Interfejs panelu administracyjnego z dynamicznymi wykresami.
+                  Interfejs zarządzania danymi z dynamicznymi wykresami
+                  i statystykami w czasie rzeczywistym.
                 </p>
                 <ul class="tech-stack">
                   <li>React</li>
                   <li>Chart.js</li>
+                  <li>CSS</li>
                 </ul>
-                <div class="project-links">
-                  <a href="#" class="link-btn">Kod</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING SECTION -->
+      <section id="pricing" class="section section-white">
+        <div class="container">
+          <h2 class="section-title">Cennik</h2>
+          <p class="section-subtitle">Przejrzyste ceny bez ukrytych kosztów. Każdy projekt wyceniany indywidualnie.</p>
+          <div class="pricing-grid">
+            <article class="pricing-card">
+              <div class="pricing-header">
+                <h3>Wizytówka</h3>
+                <div class="price">od <span>799</span> zł</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Do 5 podstron</li>
+                <li><i class="fas fa-check"></i> Projekt graficzny</li>
+                <li><i class="fas fa-check"></i> Responsywność (mobile)</li>
+                <li><i class="fas fa-check"></i> Optymalizacja SEO</li>
+                <li><i class="fas fa-check"></i> Formularz kontaktowy</li>
+                <li><i class="fas fa-check"></i> Czas realizacji: ~2 tygodnie</li>
+              </ul>
+              <a href="#contact" class="btn btn-outline pricing-btn">Zapytaj o wycenę</a>
+            </article>
+
+            <article class="pricing-card pricing-featured">
+              <div class="pricing-badge">Najpopularniejszy</div>
+              <div class="pricing-header">
+                <h3>Landing Page</h3>
+                <div class="price">od <span>1&nbsp;299</span> zł</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> 1 strona sprzedażowa</li>
+                <li><i class="fas fa-check"></i> Projekt graficzny</li>
+                <li><i class="fas fa-check"></i> Responsywność (mobile)</li>
+                <li><i class="fas fa-check"></i> Zaawansowane SEO</li>
+                <li><i class="fas fa-check"></i> Animacje i interakcje</li>
+                <li><i class="fas fa-check"></i> Czas realizacji: ~1 tydzień</li>
+              </ul>
+              <a href="#contact" class="btn btn-primary pricing-btn">Zapytaj o wycenę</a>
+            </article>
+
+            <article class="pricing-card">
+              <div class="pricing-header">
+                <h3>Sklep / Custom</h3>
+                <div class="price">od <span>2&nbsp;499</span> zł</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Sklep lub rozbudowana strona</li>
+                <li><i class="fas fa-check"></i> Panel zarządzania</li>
+                <li><i class="fas fa-check"></i> Integracja płatności</li>
+                <li><i class="fas fa-check"></i> Zaawansowane SEO</li>
+                <li><i class="fas fa-check"></i> Indywidualna wycena funkcji</li>
+                <li><i class="fas fa-check"></i> Czas realizacji: wyceniany</li>
+              </ul>
+              <a href="#contact" class="btn btn-outline pricing-btn">Zapytaj o wycenę</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS SECTION -->
+      <section id="testimonials" class="section section-dark">
+        <div class="container">
+          <h2 class="section-title">Co mówią <span class="accent">klienci?</span></h2>
+          <div class="testimonials-grid">
+            <article class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Jakub stworzył dla mnie stronę w niecałe dwa tygodnie. Klienci często komentują, że wygląda bardzo profesjonalnie. Polecam!"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">AK</div>
+                <div class="testimonial-info">
+                  <strong>Anna K.</strong>
+                  <span>Salon kosmetyczny, Zambrów</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Prosta współpraca, szybki kontakt i efekt powyżej oczekiwań. Strona działa świetnie i już przynosi nowych klientów."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">MW</div>
+                <div class="testimonial-info">
+                  <strong>Marek W.</strong>
+                  <span>Firma budowlana, okolice Zambrowa</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Strona działa perfekcyjnie na telefonie, a to dla moich klientów kluczowe. Bardzo dobry kontakt i uczciwe ceny."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">TS</div>
+                <div class="testimonial-info">
+                  <strong>Tomasz S.</strong>
+                  <span>Warsztat samochodowy</span>
                 </div>
               </div>
             </article>
@@ -239,13 +353,25 @@
         </div>
       </section>
 
+      <!-- CONTACT SECTION -->
       <section id="contact" class="section contact">
         <div class="container">
           <h2 class="section-title">
             Skontaktuj się <span class="accent">ze mną</span>
           </h2>
           <div class="contact-content">
-            <p>Masz pytanie lub propozycję współpracy? Napisz do mnie!</p>
+            <p>Masz pytanie lub propozycję współpracy? Napisz lub zadzwoń!</p>
+
+            <div class="contact-methods">
+              <a href="tel:+48XXXXXXXXX" class="contact-method">
+                <i class="fas fa-phone"></i>
+                <span>+48 XXX XXX XXX</span>
+              </a>
+              <a href="mailto:kontakt@studiojd.pl" class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <span>kontakt@studiojd.pl</span>
+              </a>
+            </div>
 
             <form
               id="contact-form"
@@ -254,59 +380,26 @@
               class="contact-form"
             >
               <div class="form-group">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Twoje Imię"
-                  required
-                />
+                <input type="text" name="name" id="name" placeholder="Twoje Imię" required />
               </div>
               <div class="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Twój Email"
-                  required
-                />
+                <input type="email" name="email" id="email" placeholder="Twój Email" required />
               </div>
               <div class="form-group">
-                <textarea
-                  name="message"
-                  id="message"
-                  rows="5"
-                  placeholder="Wiadomość"
-                  required
-                ></textarea>
+                <textarea name="message" id="message" rows="5" placeholder="Opisz czego potrzebujesz..." required></textarea>
               </div>
               <button type="submit" class="btn btn-primary big-contact-btn">
                 Wyślij Wiadomość
               </button>
               <div id="form-status"></div>
             </form>
-
-            <!-- <div class="social-links">
-              <a
-                href="https://github.com/Dybsonereq"
-                target="_blank"
-                class="social-link"
-                ><i class="fab fa-github"></i> GitHub</a
-              >
-              <a
-                href="https://www.linkedin.com/in/jakub-dybowski/"
-                target="_blank"
-                class="social-link"
-                ><i class="fab fa-linkedin"></i> LinkedIn</a
-              > -->
-            </div>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>&copy; 2026 StudioJD. Profesjonalne strony dla biznesu - Zambrów i okolice.</p>
+      <p>&copy; 2026 StudioJD — Jakub Dybowski. Profesjonalne strony dla biznesu &middot; Zambrów i okolice.</p>
     </footer>
 
     <script src="script.js"></script>

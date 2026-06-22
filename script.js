@@ -85,7 +85,7 @@ const observerContainer = new IntersectionObserver((entries) => {
 
 // Select elements to animate
 const scrollElements = document.querySelectorAll(
-  ".section-title, .about-text p, .stat-card, .project-card, .offer-grid",
+  ".section-title, .about-text p, .stat-card, .project-card, .offer-grid, .process-step, .pricing-card, .testimonial-card, .contact-method",
 );
 
 // Pre-calculate delays for offer cards (Reverse order: Right first, then Left)
