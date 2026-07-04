@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/jakubdybowski/Desktop/JDstudio/StudioJD/.claude)"
+    ]
+  }
+}

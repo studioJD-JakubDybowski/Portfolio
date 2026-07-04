@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polityka cookies — StudioJD</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal-page { padding-block: 8rem 6rem; max-width: 740px; margin-inline: auto; }
+    .legal-page h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; }
+    .legal-page h2 { font-size: 1.25rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+    .legal-page p, .legal-page li { color: var(--text-2); line-height: 1.7; margin-bottom: 0.75rem; }
+    .legal-page ul { list-style: disc; padding-left: 1.5rem; }
+    .legal-page strong { color: var(--text); }
+    .legal-page a { color: var(--accent); text-decoration: underline; }
+    .cookie-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin-block: 1rem; }
+    .cookie-table th, .cookie-table td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border); }
+    .cookie-table th { background: var(--bg-2); color: var(--text); font-weight: 600; }
+    .cookie-table td { color: var(--text-2); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <header class="site-header is-scrolled">
+    <nav class="nav container">
+      <a href="/" class="logo-text">Studio<em>JD</em></a>
+      <a href="/#kontakt" class="btn btn--primary" style="font-size:0.875rem;padding:0.625rem 1.25rem;">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <article class="legal-page">
+        <h1>Polityka cookies</h1>
+        <p>Ostatnia aktualizacja: 24 czerwca 2026 r.</p>
+
+        <h2>1. Czym są pliki cookie?</h2>
+        <p>Pliki cookie to małe pliki tekstowe zapisywane na Twoim urządzeniu przez przeglądarkę internetową. Pozwalają stronie zapamiętać Twoje preferencje i zbierać informacje o sposobie korzystania z serwisu.</p>
+
+        <h2>2. Jakich plików cookie używamy?</h2>
+        <table class="cookie-table">
+          <thead>
+            <tr>
+              <th>Nazwa</th>
+              <th>Rodzaj</th>
+              <th>Cel</th>
+              <th>Ważność</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cookie-consent</td>
+              <td>Niezbędne</td>
+              <td>Zapamiętanie Twojej decyzji o zgodzie na cookies</td>
+              <td>1 rok</td>
+            </tr>
+            <tr>
+              <td>_ga, _ga_*</td>
+              <td>Analityczne</td>
+              <td>Google Analytics — analiza ruchu na stronie (tylko za Twoją zgodą)</td>
+              <td>2 lata</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>3. Zgoda i jej wycofanie</h2>
+        <p>Analityczne pliki cookie ładowane są wyłącznie po Twojej wyraźnej zgodzie. Zgodę możesz wycofać w dowolnym momencie, usuwając pliki cookie w ustawieniach przeglądarki lub klikając poniżej:</p>
+        <p><button onclick="localStorage.removeItem('cookie-consent'); window.location.reload();" style="color:var(--accent);text-decoration:underline;cursor:pointer;background:none;border:none;font:inherit;padding:0;">Wycofaj zgodę i załaduj stronę ponownie</button></p>
+
+        <h2>4. Zarządzanie plikami cookie w przeglądarce</h2>
+        <p>Możesz samodzielnie zarządzać plikami cookie przez ustawienia przeglądarki:</p>
+        <ul>
+          <li>Chrome: Ustawienia → Prywatność i bezpieczeństwo → Pliki cookie</li>
+          <li>Firefox: Ustawienia → Prywatność i bezpieczeństwo</li>
+          <li>Safari: Preferencje → Prywatność</li>
+          <li>Edge: Ustawienia → Pliki cookie i uprawnienia witryn</li>
+        </ul>
+
+        <h2>5. Kontakt</h2>
+        <p>Pytania dotyczące polityki cookies kieruj na: <a href="mailto:kontakt@studiojd.pl">kontakt@studiojd.pl</a>.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top:none;margin-top:0;">
+        <p>&copy; 2026 StudioJD — Jakub Dybowski</p>
+        <p><a href="/" style="color:var(--text-2);">Wróć na stronę główną</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
