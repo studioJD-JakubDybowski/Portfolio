@@ -222,85 +222,127 @@ const counterObs = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 
 /* ════════════════════════════════════════════
-   FORM VALIDATION & SUBMIT
+   FORM VALIDATION HELPERS
 ════════════════════════════════════════════ */
-const form = document.getElementById('contactForm');
-
 function showError(input, msg) {
   input.classList.add('is-error');
   const errEl = input.closest('.form-group')?.querySelector('.form-error');
   if (errEl) errEl.textContent = msg;
 }
-
 function clearError(input) {
   input.classList.remove('is-error');
   const errEl = input.closest('.form-group')?.querySelector('.form-error');
   if (errEl) errEl.textContent = '';
 }
-
 function validate(input) {
   clearError(input);
   const val = input.value.trim();
-
   if (input.type === 'checkbox') {
-    if (input.required && !input.checked) {
-      showError(input, 'Zgoda jest wymagana do wysłania zapytania.');
-      return false;
-    }
+    if (input.required && !input.checked) { showError(input, 'Zgoda jest wymagana do wysłania zapytania.'); return false; }
     return true;
   }
-
-  if (input.required && !val) {
-    showError(input, 'To pole jest wymagane.');
-    return false;
-  }
-  if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) {
-    showError(input, 'Podaj prawidłowy adres e-mail.');
-    return false;
-  }
-  if (input.type === 'tel' && val && !/^[\d\s+\-().]{7,20}$/.test(val)) {
-    showError(input, 'Podaj prawidłowy numer telefonu.');
-    return false;
-  }
+  if (input.required && !val) { showError(input, 'To pole jest wymagane.'); return false; }
+  if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) { showError(input, 'Podaj prawidłowy adres e-mail.'); return false; }
+  if (input.type === 'tel' && val && !/^[\d\s+\-().]{7,20}$/.test(val)) { showError(input, 'Podaj prawidłowy numer telefonu.'); return false; }
   return true;
 }
 
-form?.querySelectorAll('input:not([type="checkbox"]), textarea, select').forEach(input => {
-  input.addEventListener('blur', () => validate(input));
-  input.addEventListener('input', () => { if (input.classList.contains('is-error')) clearError(input); });
-});
+/* ════════════════════════════════════════════
+   QUIZ — kwalifikacja leadów
+════════════════════════════════════════════ */
+(function () {
+  const quiz    = document.getElementById('contactQuiz');
+  if (!quiz) return;
 
-form?.addEventListener('submit', async e => {
-  e.preventDefault();
+  const fill    = document.getElementById('quizFill');
+  const label   = document.getElementById('quizLabel');
+  const backBtn = document.getElementById('quizBack');
+  const summary = document.getElementById('quizSummary');
+  const form    = document.getElementById('contactForm');
 
-  // Honeypot — abort silently if filled
-  if (form.querySelector('#hp_website')?.value) return;
+  const TOTAL = 4;
+  let current = 1;
+  const answers = {};
 
-  let ok = true;
-  form.querySelectorAll('input[required], textarea[required]').forEach(f => { if (!validate(f)) ok = false; });
-  const consent = form.querySelector('#consent');
-  if (consent && !validate(consent)) ok = false;
+  const steps = [
+    document.getElementById('qStep1'),
+    document.getElementById('qStep2'),
+    document.getElementById('qStep3'),
+    document.getElementById('qStep4'),
+  ];
 
-  if (!ok) {
-    form.querySelector('.is-error')?.focus();
-    return;
+  function goTo(idx) {
+    const prev = steps[current - 1];
+    const next = steps[idx - 1];
+    if (!prev || !next || idx === current) return;
+
+    prev.classList.add('is-leaving');
+    setTimeout(() => {
+      prev.classList.remove('is-active', 'is-leaving');
+      next.classList.add('is-active');
+      current = idx;
+      fill.style.width = `${((idx - 1) / (TOTAL - 1)) * 100}%`;
+      label.textContent = `Krok ${idx} z ${TOTAL}`;
+      backBtn.classList.toggle('is-visible', idx > 1);
+      quiz.setAttribute('aria-valuenow', ((idx - 1) / (TOTAL - 1)) * 100);
+      if (idx === TOTAL) buildSummary();
+    }, 230);
   }
 
-  const btn = document.getElementById('submitBtn');
-  btn.classList.add('is-loading');
-  btn.disabled = true;
-
-  try {
-    // TODO: zamień FORMSPREE_ID na swoje ID z formspree.io/forms
-    const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form),
+  function buildSummary() {
+    const keys = ['Projekt', 'Budżet', 'Start'];
+    summary.innerHTML = keys
+      .filter(k => answers[k])
+      .map(k => `<div class="quiz__sum-item"><span>${k}</span><strong>${answers[k]}</strong></div>`)
+      .join('');
+    keys.forEach(k => {
+      let inp = form.querySelector(`[name="${k}"]`);
+      if (!inp) {
+        inp = Object.assign(document.createElement('input'), { type: 'hidden', name: k });
+        form.prepend(inp);
+      }
+      inp.value = answers[k] || '';
     });
-    if (!res.ok) throw new Error();
+  }
 
-    form.innerHTML = `
-      <div class="form-success" role="alert">
+  quiz.querySelectorAll('.quiz__opts').forEach(opts => {
+    opts.querySelectorAll('.quiz__opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        answers[opts.dataset.key] = btn.dataset.value;
+        opts.querySelectorAll('.quiz__opt').forEach(b => b.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        setTimeout(() => goTo(current + 1), 200);
+      });
+    });
+  });
+
+  backBtn?.addEventListener('click', () => goTo(current - 1));
+
+  form?.querySelectorAll('input:not([type="checkbox"]):not([type="hidden"]):not([tabindex="-1"])').forEach(inp => {
+    inp.addEventListener('blur', () => validate(inp));
+    inp.addEventListener('input', () => { if (inp.classList.contains('is-error')) clearError(inp); });
+  });
+
+  form?.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form.querySelector('#hp_website')?.value) return;
+
+    let ok = true;
+    form.querySelectorAll('input[required]').forEach(f => { if (!validate(f)) ok = false; });
+    if (!ok) { form.querySelector('.is-error')?.focus(); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.classList.add('is-loading');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error();
+      quiz.innerHTML = `<div class="form-success" role="alert">
         <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
           <circle cx="26" cy="26" r="24" stroke="#C8FF00" stroke-width="1.5"/>
           <path d="M16 26l8 8 12-14" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -308,15 +350,17 @@ form?.addEventListener('submit', async e => {
         <h3>Wiadomość wysłana!</h3>
         <p>Odezwę się w ciągu 24 godzin. Do zobaczenia.</p>
       </div>`;
-  } catch {
-    btn.classList.remove('is-loading');
-    btn.disabled = false;
-    const errBox = document.createElement('p');
-    errBox.style.cssText = 'color:#FF7070;font-size:0.875rem;margin-top:-0.5rem;';
-    errBox.textContent = 'Coś poszło nie tak. Spróbuj ponownie lub napisz bezpośrednio na kontakt@studiojd.pl.';
-    btn.after(errBox);
-  }
-});
+    } catch {
+      btn.classList.remove('is-loading');
+      btn.disabled = false;
+      const errBox = Object.assign(document.createElement('p'), {
+        textContent: 'Coś poszło nie tak. Napisz bezpośrednio na kontakt@studiojd.pl.',
+      });
+      errBox.style.cssText = 'color:#FF7070;font-size:0.875rem;margin-top:0.5rem;';
+      btn.after(errBox);
+    }
+  });
+})();
 
 /* ════════════════════════════════════════════
    COOKIE BANNER

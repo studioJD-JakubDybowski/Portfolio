@@ -920,68 +920,129 @@
             </div>
           </div>
 
-          <form class="contact-form reveal-up" id="contactForm" novalidate>
-            <!-- Honeypot — nie wypełniać -->
-            <div class="visually-hidden" aria-hidden="true">
-              <label for="hp_website">Strona www</label>
-              <input type="url" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off">
-            </div>
+          <!-- ── QUIZ ── -->
+          <div class="quiz reveal-up" id="contactQuiz" role="region" aria-label="Formularz wyceny">
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Imię i nazwisko <span class="req" aria-label="wymagane">*</span></label>
-                <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jan Kowalski">
-                <span class="form-error" role="alert" aria-live="polite"></span>
+            <div class="quiz__head">
+              <div class="quiz__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="quiz__fill" id="quizFill"></div>
               </div>
-              <div class="form-group">
-                <label for="email">Adres e-mail <span class="req" aria-label="wymagane">*</span></label>
-                <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@firma.pl">
-                <span class="form-error" role="alert" aria-live="polite"></span>
+              <span class="quiz__label" id="quizLabel" aria-live="polite">Krok 1 z 4</span>
+            </div>
+
+            <div class="quiz__body">
+
+              <!-- Krok 1 — typ projektu -->
+              <div class="quiz__step is-active" id="qStep1">
+                <h3 class="quiz__q">Jakiego projektu<br>potrzebujesz?</h3>
+                <div class="quiz__opts" data-key="Projekt">
+                  <button class="quiz__opt" type="button" data-value="Strona firmowa / landing page">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h20" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Strona firmowa<small>lub landing page</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="Sklep internetowy">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 6h18M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>Sklep internetowy<small>e-commerce</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="Redesign istniejącej strony">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Redesign<small>istniejącej strony</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="SEO i opieka">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4.35-4.35M8 11l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>SEO i opieka<small>widoczność i utrzymanie</small></span>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="phone">Numer telefonu</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+48 600 000 000">
-              <span class="form-error" role="alert" aria-live="polite"></span>
-            </div>
+              <!-- Krok 2 — budżet -->
+              <div class="quiz__step" id="qStep2">
+                <h3 class="quiz__q">Jaki jest Twój<br>orientacyjny budżet?</h3>
+                <div class="quiz__opts" data-key="Budżet">
+                  <button class="quiz__opt" type="button" data-value="Do 2 000 zł">
+                    <span>Do 2 000 zł<small>strony wizytówkowe, landing</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="2 000 – 5 000 zł">
+                    <span>2 000 – 5 000 zł<small>rozbudowane strony firmowe</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="Powyżej 5 000 zł">
+                    <span>Powyżej 5 000 zł<small>sklepy, projekty złożone</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="Jeszcze nie wiem">
+                    <span>Jeszcze nie wiem<small>potrzebuję wyceny</small></span>
+                  </button>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="service">Czego szukasz?</label>
-              <select id="service" name="service">
-                <option value="">Wybierz usługę...</option>
-                <option value="strona-firmowa">Strona firmowa</option>
-                <option value="sklep">Sklep internetowy</option>
-                <option value="landing">Landing page</option>
-                <option value="redesign">Redesign istniejącej strony</option>
-                <option value="seo">Optymalizacja SEO</option>
-                <option value="opieka">Opieka i utrzymanie</option>
-                <option value="inne">Inne</option>
-              </select>
-            </div>
+              <!-- Krok 3 — start -->
+              <div class="quiz__step" id="qStep3">
+                <h3 class="quiz__q">Kiedy chcesz<br>zacząć?</h3>
+                <div class="quiz__opts" data-key="Start">
+                  <button class="quiz__opt" type="button" data-value="Jak najszybciej">
+                    <span>Jak najszybciej<small>projekt pilny</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="1–2 miesiące">
+                    <span>1–2 miesiące<small>mam chwilę na planowanie</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="3+ miesięcy">
+                    <span>3+ miesięcy<small>długoterminowe plany</small></span>
+                  </button>
+                  <button class="quiz__opt" type="button" data-value="Dopiero rozglądam się">
+                    <span>Dopiero rozglądam się<small>zbieram informacje</small></span>
+                  </button>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="message">Opisz projekt <span class="req" aria-label="wymagane">*</span></label>
-              <textarea id="message" name="message" required rows="5" placeholder="Czym się zajmuje Twoja firma? Co powinna robić strona? Masz jakiś deadline lub budżet?"></textarea>
-              <span class="form-error" role="alert" aria-live="polite"></span>
-            </div>
+              <!-- Krok 4 — kontakt -->
+              <div class="quiz__step" id="qStep4">
+                <h3 class="quiz__q">Zostaw kontakt —<br>odezwę się w 24h.</h3>
+                <div class="quiz__summary" id="quizSummary"></div>
+                <form id="contactForm" novalidate>
+                  <div class="visually-hidden" aria-hidden="true">
+                    <label for="hp_website">Strona www</label>
+                    <input type="url" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="name">Imię i nazwisko <span class="req" aria-label="wymagane">*</span></label>
+                      <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jan Kowalski">
+                      <span class="form-error" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Adres e-mail <span class="req" aria-label="wymagane">*</span></label>
+                      <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@firma.pl">
+                      <span class="form-error" role="alert" aria-live="polite"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Numer telefonu</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+48 600 000 000">
+                    <span class="form-error" role="alert" aria-live="polite"></span>
+                  </div>
+                  <div class="form-group form-group--check">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="consent" name="consent" required>
+                      <span class="checkbox-box" aria-hidden="true"></span>
+                      <span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez StudioJD — Jakuba Dybowskiego z siedzibą w Zambrowie — w celu udzielenia odpowiedzi na zapytanie. <a href="polityka-prywatnosci.html" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>. <span class="req" aria-label="wymagane">*</span></span>
+                    </label>
+                    <span class="form-error" role="alert" aria-live="polite"></span>
+                  </div>
+                  <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+                    <span class="btn-label">Wyślij zapytanie</span>
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                  </button>
+                  <p class="form-note">* Pola wymagane. Odpiszę w ciągu 24 godzin roboczych.</p>
+                </form>
+              </div>
 
-            <div class="form-group form-group--check">
-              <label class="checkbox-label">
-                <input type="checkbox" id="consent" name="consent" required>
-                <span class="checkbox-box" aria-hidden="true"></span>
-                <span>Wyrażam zgodę na przetwarzanie moich danych osobowych (imię, adres e-mail, telefon) przez StudioJD — Jakuba Dybowskiego z siedzibą w Zambrowie — w celu udzielenia odpowiedzi na niniejsze zapytanie. <a href="polityka-prywatnosci.html" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>. <span class="req" aria-label="wymagane">*</span></span>
-              </label>
-              <span class="form-error" role="alert" aria-live="polite"></span>
-            </div>
+            </div><!-- /.quiz__body -->
 
-            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
-              <span class="btn-label">Wyślij zapytanie</span>
-              <span class="btn-spinner" aria-hidden="true"></span>
+            <button class="quiz__back" id="quizBack" type="button" aria-label="Wróć do poprzedniego pytania">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Wstecz
             </button>
 
-            <p class="form-note">* Pola wymagane. Odpiszę w ciągu 24 godzin roboczych.</p>
-          </form>
+          </div><!-- /.quiz -->
         </div>
       </div>
     </section>
