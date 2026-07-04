@@ -291,16 +291,13 @@ form?.addEventListener('submit', async e => {
   btn.disabled = true;
 
   try {
-    /*
-      TODO: zamień na właściwą integrację, np.:
-        const res = await fetch('https://formspree.io/f/TWOJ_ID', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form),
-        });
-        if (!res.ok) throw new Error();
-    */
-    await new Promise(r => setTimeout(r, 1200)); // symulacja
+    // TODO: zamień FORMSPREE_ID na swoje ID z formspree.io/forms
+    const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    });
+    if (!res.ok) throw new Error();
 
     form.innerHTML = `
       <div class="form-success" role="alert">
