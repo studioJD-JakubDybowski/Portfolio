@@ -1523,6 +1523,25 @@ h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.08; font-weight:
 }
 .form-group--check a { color: var(--accent); text-decoration: underline; }
 
+/* Wyróżniony blok zgody */
+.consent-block {
+  background: rgba(200, 255, 0, 0.04);
+  border: 1px solid rgba(200, 255, 0, 0.25);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.875rem 1rem;
+  margin-block: 0.25rem;
+  transition: border-color var(--t), background var(--t);
+}
+.consent-block:has(input:checked) {
+  background: rgba(200, 255, 0, 0.07);
+  border-color: rgba(200, 255, 0, 0.5);
+  border-left-color: var(--accent);
+}
+.consent-block .checkbox-label {
+  color: var(--text);
+}
+
 .form-note { font-size: 0.75rem; color: var(--text-3); }
 
 /* Form success state */
