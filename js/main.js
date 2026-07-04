@@ -252,8 +252,8 @@ function validate(input) {
     return true;
   }
   if (input.required && !val) { showError(input, 'To pole jest wymagane.'); return false; }
-  if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) { showError(input, 'Podaj prawidłowy adres e-mail.'); return false; }
-  if (input.type === 'tel' && val && !/^[\d\s+\-().]{7,20}$/.test(val)) { showError(input, 'Podaj prawidłowy numer telefonu.'); return false; }
+  if (input.type === 'email' && val && !input.checkValidity()) { showError(input, 'Podaj prawidłowy adres e-mail.'); return false; }
+  if (input.type === 'tel' && val && (val.replace(/\D/g, '').length < 7)) { showError(input, 'Numer telefonu jest za krótki.'); return false; }
   return true;
 }
 
