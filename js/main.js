@@ -346,7 +346,7 @@ function validate(input) {
     btn.disabled = true;
 
     try {
-      const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+      const res = await fetch('https://formspree.io/f/mbdvqnbe', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(form),
