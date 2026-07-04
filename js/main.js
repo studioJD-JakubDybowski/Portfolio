@@ -351,7 +351,8 @@ function validate(input) {
         headers: { 'Accept': 'application/json' },
         body: new FormData(form),
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || data?.errors?.[0]?.message || `HTTP ${res.status}`);
       quiz.innerHTML = `<div class="form-success" role="alert">
         <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
           <circle cx="26" cy="26" r="24" stroke="#C8FF00" stroke-width="1.5"/>
@@ -360,11 +361,11 @@ function validate(input) {
         <h3>Wiadomość wysłana!</h3>
         <p>Odezwę się w ciągu 24 godzin. Do zobaczenia.</p>
       </div>`;
-    } catch {
+    } catch (err) {
       btn.classList.remove('is-loading');
       btn.disabled = false;
       const errBox = Object.assign(document.createElement('p'), {
-        textContent: 'Coś poszło nie tak. Napisz bezpośrednio na kontakt@studiojd.pl.',
+        textContent: `Coś poszło nie tak (${err.message}). Napisz bezpośrednio na kontakt@studiojd.pl.`,
       });
       errBox.style.cssText = 'color:#FF7070;font-size:0.875rem;margin-top:0.5rem;';
       btn.after(errBox);
