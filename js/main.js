@@ -197,6 +197,16 @@ const revealObs = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal-up, .reveal-clip').forEach(el => revealObs.observe(el));
 
+/* Quiz entrance — dedykowany observer z większym efektem */
+const quizEl = document.getElementById('contactQuiz');
+if (quizEl) {
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    quizEl.classList.add('is-visible');
+    obs.disconnect();
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }).observe(quizEl);
+}
+
 /* ════════════════════════════════════════════
    COUNTER ANIMATION
 ════════════════════════════════════════════ */
