@@ -1073,6 +1073,17 @@ h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.08; font-weight:
   color: var(--text-2);
 }
 
+.portfolio-item__link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity var(--t);
+}
+.portfolio-item__link:hover { opacity: 0.75; }
+
 .portfolio__cta {
   display: flex;
   align-items: center;
