@@ -1,6 +1,28 @@
 'use strict';
 
 /* ════════════════════════════════════════════
+   PAGE LOADER
+════════════════════════════════════════════ */
+(function () {
+  const loader = document.getElementById('pageLoader');
+  if (!loader) return;
+
+  if (sessionStorage.getItem('jd_visited') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    loader.remove();
+    return;
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  setTimeout(() => {
+    loader.classList.add('is-done');
+    document.body.style.overflow = '';
+    sessionStorage.setItem('jd_visited', '1');
+    setTimeout(() => loader.remove(), 550);
+  }, 1500);
+})();
+
+/* ════════════════════════════════════════════
    SCROLL PROGRESS BAR
 ════════════════════════════════════════════ */
 const progressBar = document.getElementById('scrollProgress');
@@ -120,7 +142,6 @@ const navMenu   = document.getElementById('navMenu');
 let lastScrollY = 0;
 
 window.addEventListener('scroll', () => {
-  if (!header) return;
   const y = window.scrollY;
   header.classList.toggle('is-scrolled', y > 40);
   header.classList.toggle('is-hidden', y > 200 && y > lastScrollY);
