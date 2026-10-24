@@ -88,7 +88,7 @@ POSTS = [
               <li>Czy strona będzie miała politykę prywatności i obsługę zgód na cookies zgodną z RODO?</li>
               <li>Kto i jak szybko reaguje, gdy strona przestanie działać?</li>
             </ol>
-            <p>Na każde z tych pytań odpowiadamy na piśmie, w ofercie — zanim cokolwiek podpiszesz. Pracujemy zdalnie z Zambrowa i realizujemy projekty dla firm z całej Polski, od Łomży i Białegostoku po Warszawę i Gdańsk.</p>""",
+            <p>Na każde z tych pytań odpowiadamy na piśmie, w ofercie — zanim cokolwiek podpiszesz. Pracujemy zdalnie z Zambrowa, więc możemy współpracować z firmą z dowolnego miejsca w Polsce.</p>""",
         "cta_title": "Chcesz wiedzieć, ile będzie kosztować Twoja strona?",
         "cta_text": "Opisz krótko, czego potrzebujesz. Odpowiemy w ciągu 24 godzin z konkretną, bezpłatną wyceną — bez zobowiązań.",
         "sources": [

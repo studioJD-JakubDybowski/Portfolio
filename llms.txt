@@ -1,6 +1,6 @@
 # StudioJD
 
-> StudioJD projektuje i wdraża strony internetowe, sklepy online oraz landing page dla małych i średnich firm w Polsce. Działa zdalnie z Zambrowa (woj. podlaskie) i obsługuje klientów z całej Polski.
+> StudioJD projektuje i wdraża strony internetowe, sklepy online, landing page oraz aplikacje webowe i systemy dla małych i średnich firm w Polsce. Działa zdalnie z Zambrowa (woj. podlaskie) i obsługuje klientów z całej Polski.
 
 StudioJD to pracownia projektowania stron internetowych. Każda strona powstaje od podstaw, bez gotowych szablonów, dopasowana do konkretnej marki i branży klienta. Realizacje są szybkie, responsywne (działają poprawnie na telefonie, tablecie i komputerze) i przygotowane pod widoczność w wyszukiwarce Google (SEO).
 
@@ -10,13 +10,14 @@ StudioJD to pracownia projektowania stron internetowych. Każda strona powstaje 
 - [Sklep internetowy](https://www.studiojd.pl/#uslugi) — od 1499 zł, realizacja 4–6 tygodni. Pełny sklep z płatnościami online, panelem zamówień i integracją kuriera/paczkomatów.
 - [Redesign i optymalizacja istniejącej strony](https://www.studiojd.pl/#uslugi) — od 800 zł, realizacja 2–4 tygodnie.
 - [SEO i widoczność w Google](https://www.studiojd.pl/#uslugi) — od 600 zł/mies., umowa minimum 3 miesiące.
+- Aplikacje webowe i systemy dla firm — wycena indywidualna (panele dla klientów, systemy zgłoszeń i rezerwacji, proste CRM-y, integracje, automatyzacja).
 - Opieka i utrzymanie strony po wdrożeniu — od 150 zł/mies. (kopie zapasowe, monitoring, drobne zmiany treści).
 
 Wycena jest zawsze indywidualna i bezpłatna — podane kwoty to ceny startowe.
 
 ## Obszar działania
 
-Praca zdalna z siedzibą w Zambrowie (woj. podlaskie). Obsługa klientów z całej Polski, w tym Warszawy, Krakowa, Gdańska, Wrocławia, Poznania, Białegostoku i Łomży.
+Praca zdalna z siedzibą w Zambrowie (woj. podlaskie). Współpraca możliwa z firmami z całej Polski.
 
 ## Realizacje
 

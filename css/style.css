@@ -1744,6 +1744,8 @@ h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.08; font-weight:
   grid-template-columns: 1fr 1fr;
   gap: var(--s3);
 }
+/* nieparzysta liczba opcji — ostatnia zajmuje cały wiersz */
+.quiz__opts > .quiz__opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .quiz__opt {
   display: flex;
   flex-direction: column;
@@ -1940,7 +1942,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.08; font-weight:
 }
 .forwho__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--s6);
 }
 .forwho-card {
