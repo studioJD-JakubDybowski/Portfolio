@@ -3,7 +3,7 @@ Uruchamiaj PO wdrożeniu na produkcję, z katalogu projektu:
     python3 -I tools/indexnow.py            # wszystkie adresy z sitemap.xml
     python3 -I tools/indexnow.py /blog/x    # tylko wskazane ścieżki
 Klucz to nazwa pliku <klucz>.txt w katalogu głównym strony."""
-import glob, json, re, sys, urllib.request, urllib.error
+import glob, json, re, subprocess, sys
 
 HOST = "www.studiojd.pl"
 
@@ -17,11 +17,16 @@ if len(sys.argv) > 1:
 else:
     urls = re.findall(r"<loc>(.*?)</loc>", open("sitemap.xml", encoding="utf-8").read())
 
-body = json.dumps({"host": HOST, "key": key, "keyLocation": f"https://{HOST}/{key}.txt", "urlList": urls}).encode()
-req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
-                             headers={"Content-Type": "application/json; charset=utf-8"})
-try:
-    with urllib.request.urlopen(req, timeout=20) as r:
-        print(f"HTTP {r.status} — zgłoszono {len(urls)} adresów")  # 200 lub 202 = przyjęte
-except urllib.error.HTTPError as e:
-    sys.exit(f"HTTP {e.code} — {e.read().decode(errors='replace')[:300]}")
+body = json.dumps({"host": HOST, "key": key, "keyLocation": f"https://{HOST}/{key}.txt", "urlList": urls})
+# Wysyłka przez systemowy curl: Python z python.org na macOS często nie ma certyfikatów CA.
+res = subprocess.run(
+    ["curl", "-sS", "-o", "/dev/null", "-w", "%{http_code}", "-X", "POST",
+     "-H", "Content-Type: application/json; charset=utf-8", "--data-binary", "@-",
+     "https://api.indexnow.org/indexnow"],
+    input=body, capture_output=True, text=True, timeout=30,
+)
+code = res.stdout.strip()
+if code in ("200", "202"):
+    print(f"HTTP {code} — zgłoszono {len(urls)} adresów")
+else:
+    sys.exit(f"HTTP {code or '?'} — {res.stderr.strip()[:300]}")
