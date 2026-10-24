@@ -32,10 +32,8 @@
 
   <link rel="canonical" href="https://www.studiojd.pl/">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -216,18 +214,11 @@
         <li><a href="#realizacje">Realizacje</a></li>
         <li><a href="#proces">Jak działamy</a></li>
         <li><a href="#o-nas">O nas</a></li>
+        <li><a href="/blog">Blog</a></li>
         <li><a href="#kontakt" class="nav__cta">Bezpłatna wycena</a></li>
       </ul>
     </nav>
   </header>
-
-  <!-- PAGE LOADER -->
-  <div id="pageLoader" aria-hidden="true" role="presentation">
-    <div class="loader__inner">
-      <span class="loader__logo">Studio<strong>JD</strong></span>
-      <div class="loader__bar"><div class="loader__fill"></div></div>
-    </div>
-  </div>
 
   <main id="main">
 
@@ -406,28 +397,28 @@
         <div class="services__layout reveal-up">
 
           <!-- Lewy panel: nawigacja -->
-          <nav class="services__nav" aria-label="Nawigacja usług">
-            <button class="svc-tab is-active" data-svc="0" aria-selected="true">
+          <nav class="services__nav" aria-label="Nawigacja usług" role="tablist">
+            <button class="svc-tab is-active" data-svc="0" role="tab" aria-selected="true" aria-controls="svc-panel-0" id="svc-tab-0">
               <span class="svc-tab__num" aria-hidden="true">01</span>
               <span class="svc-tab__name">Strony firmowe<br><small>i landing page</small></span>
               <svg class="svc-tab__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button class="svc-tab" data-svc="1" aria-selected="false">
+            <button class="svc-tab" data-svc="1" role="tab" aria-selected="false" aria-controls="svc-panel-1" id="svc-tab-1">
               <span class="svc-tab__num" aria-hidden="true">02</span>
               <span class="svc-tab__name">Sklepy<br><small>internetowe</small></span>
               <svg class="svc-tab__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button class="svc-tab" data-svc="2" aria-selected="false">
+            <button class="svc-tab" data-svc="2" role="tab" aria-selected="false" aria-controls="svc-panel-2" id="svc-tab-2">
               <span class="svc-tab__num" aria-hidden="true">03</span>
               <span class="svc-tab__name">Redesign<br><small>i optymalizacja</small></span>
               <svg class="svc-tab__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button class="svc-tab" data-svc="3" aria-selected="false">
+            <button class="svc-tab" data-svc="3" role="tab" aria-selected="false" aria-controls="svc-panel-3" id="svc-tab-3">
               <span class="svc-tab__num" aria-hidden="true">04</span>
               <span class="svc-tab__name">SEO<br><small>i widoczność</small></span>
               <svg class="svc-tab__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button class="svc-tab" data-svc="4" aria-selected="false">
+            <button class="svc-tab" data-svc="4" role="tab" aria-selected="false" aria-controls="svc-panel-4" id="svc-tab-4">
               <span class="svc-tab__num" aria-hidden="true">05</span>
               <span class="svc-tab__name">Opieka<br><small>i utrzymanie</small></span>
               <svg class="svc-tab__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -437,7 +428,7 @@
           <!-- Prawy panel: treść -->
           <div class="services__content" aria-live="polite">
 
-            <div class="svc-panel is-active" data-panel="0">
+            <div class="svc-panel is-active" data-panel="0" role="tabpanel" id="svc-panel-0" aria-labelledby="svc-tab-0">
               <span class="svc-panel__ghost" aria-hidden="true">01</span>
               <p class="svc-panel__label">Najczęściej wybierane</p>
               <h3 class="svc-panel__title">Strony firmowe<br>i landing page</h3>
@@ -456,7 +447,7 @@
               </div>
             </div>
 
-            <div class="svc-panel" data-panel="1">
+            <div class="svc-panel" data-panel="1" role="tabpanel" id="svc-panel-1" aria-labelledby="svc-tab-1">
               <span class="svc-panel__ghost" aria-hidden="true">02</span>
               <p class="svc-panel__label">E-commerce</p>
               <h3 class="svc-panel__title">Sklepy<br>internetowe</h3>
@@ -475,7 +466,7 @@
               </div>
             </div>
 
-            <div class="svc-panel" data-panel="2">
+            <div class="svc-panel" data-panel="2" role="tabpanel" id="svc-panel-2" aria-labelledby="svc-tab-2">
               <span class="svc-panel__ghost" aria-hidden="true">03</span>
               <p class="svc-panel__label">Dla istniejących firm</p>
               <h3 class="svc-panel__title">Redesign<br>i optymalizacja</h3>
@@ -494,7 +485,7 @@
               </div>
             </div>
 
-            <div class="svc-panel" data-panel="3">
+            <div class="svc-panel" data-panel="3" role="tabpanel" id="svc-panel-3" aria-labelledby="svc-tab-3">
               <span class="svc-panel__ghost" aria-hidden="true">04</span>
               <p class="svc-panel__label">Widoczność online</p>
               <h3 class="svc-panel__title">SEO<br>i widoczność w Google</h3>
@@ -513,7 +504,7 @@
               </div>
             </div>
 
-            <div class="svc-panel" data-panel="4">
+            <div class="svc-panel" data-panel="4" role="tabpanel" id="svc-panel-4" aria-labelledby="svc-tab-4">
               <span class="svc-panel__ghost" aria-hidden="true">05</span>
               <p class="svc-panel__label">Spokój ducha</p>
               <h3 class="svc-panel__title">Opieka<br>i utrzymanie</h3>
@@ -825,6 +816,9 @@
     </section>
 
     <!-- ══════════════════════════════ OPINIE -->
+    <!-- OPINIE — ukryte: przykładowe opinie nie pochodziły od prawdziwych klientów
+         (publikowanie fikcyjnych opinii to nieuczciwa praktyka rynkowa, art. 7 pkt 23b UPNPR).
+         Odkomentuj dopiero po podmianie na prawdziwe opinie za zgodą klientów.
     <section class="testimonials" id="opinie" aria-labelledby="testimonials-heading">
       <div class="container">
         <div class="section-header">
@@ -859,6 +853,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ══════════════════════════════ TICKER 2 -->
     <div class="ticker-outer ticker-outer--reverse" aria-hidden="true">
@@ -884,7 +879,7 @@
     <section class="faq" id="faq" aria-labelledby="faq-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-number" aria-hidden="true">07</span>
+          <span class="section-number" aria-hidden="true">06</span>
           <h2 class="section-heading reveal-up" id="faq-heading">Najczęstsze pytania</h2>
         </div>
 
@@ -968,7 +963,7 @@
     <section class="contact" id="kontakt" aria-labelledby="contact-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-number" aria-hidden="true">08</span>
+          <span class="section-number" aria-hidden="true">07</span>
           <h2 class="section-heading reveal-up" id="contact-heading">Zacznijmy rozmawiać</h2>
         </div>
 
@@ -1004,7 +999,7 @@
           <div class="quiz" id="contactQuiz" role="region" aria-label="Formularz wyceny">
 
             <div class="quiz__head">
-              <div class="quiz__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="quiz__progress" role="progressbar" aria-label="Postęp formularza wyceny" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                 <div class="quiz__fill" id="quizFill"></div>
               </div>
               <span class="quiz__label" id="quizLabel" aria-live="polite">Krok 1 z 4</span>
@@ -1151,6 +1146,7 @@
             <li><a href="#realizacje">Realizacje</a></li>
             <li><a href="#proces">Jak działamy</a></li>
             <li><a href="#o-nas">O nas</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
           </ul>
           <ul role="list">
