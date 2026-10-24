@@ -1,6 +1,7 @@
 """Buduje statyczne strony bloga StudioJD z jednego szablonu.
 Uruchom z katalogu projektu: python3 -I tools/blog/build.py .
-Treść wpisów edytujesz w tools/blog/posts.py; strony trafiają do blog/."""
+Treść wpisów edytujesz w tools/blog/posts.py; strony trafiają do blog/.
+Po wdrożeniu na produkcję zgłoś nowe adresy: python3 -I tools/indexnow.py"""
 import json, sys, html, pathlib, importlib.util
 
 ROOT = pathlib.Path(sys.argv[1])
